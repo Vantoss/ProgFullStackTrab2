@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { ContaController } from '../controller/ContaController';
+import { MoviController } from '../controller/MoviController';
 
-export const contaRotas = (controller: ContaController): Router => {
+export const moviRotas = (controller: MoviController): Router => {
   const router = Router();
 
   router.post('/', controller.inserir);

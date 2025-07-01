@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
-import { DespesaService } from '../service/DespesaService';
+import { MoviService } from '../service/MoviService';
 
-export class DespesaController {
-  private service: DespesaService;
+export class MoviController {
+  private service: MoviService;
 
-  constructor(service: DespesaService) {
+  constructor(service: MoviService) {
     this.service = service;
   }
 
   inserir = async (req: Request, res: Response): Promise<void> => {
-    const { tipo, data, valor } = req.body;
+    const { nome, categoria, data, valor, tipo } = req.body;
     try{ 
-        const novaDespesa = await this.service.inserir({ tipo, data, valor });
-        res.status(201).json(novaDespesa);
+        const novaMovi = await this.service.inserir({ nome, categoria, data, valor, tipo });
+        res.status(201).json(novaMovi);
     }
     catch(err:any) {
         res.status(err.id).json({ error: err.msg });
@@ -20,15 +20,15 @@ export class DespesaController {
   };
 
   listar = async (_req: Request, res: Response): Promise<void> => {
-    const despesas = await this.service.listar();
-    res.json(despesas);
+    const movis = await this.service.listar();
+    res.json(movis);
   };
 
   buscarPorId = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
     try{ 
-        const despesa = await this.service.buscarPorId(id);
-        res.json(despesa);
+        const movi = await this.service.buscarPorId(id);
+        res.json(movi);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }
@@ -36,11 +36,11 @@ export class DespesaController {
 
   atualizar = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
-    const { tipo, data, valor } = req.body;
+    const { nome, categoria, data, valor, tipo } = req.body;
 
     try{ 
-        const despesaAtualizada = await this.service.atualizar(id, { tipo, data, valor });
-        res.json(despesaAtualizada);
+        const moviAtualizada = await this.service.atualizar(id, { nome, categoria, data, valor, tipo });
+        res.json(moviAtualizada);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }
@@ -49,8 +49,8 @@ export class DespesaController {
   deletar = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
     try{ 
-        const despesa = await this.service.deletar(id);
-        res.json(despesa);
+        const movi = await this.service.deletar(id);
+        res.json(movi);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }

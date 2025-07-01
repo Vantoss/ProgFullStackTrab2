@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
-import { ContaService } from '../service/ContaService';
+import { LancService } from '../service/LancService';
 
-export class ContaController {
-  private service: ContaService;
+export class LancController {
+  private service: LancService;
 
-  constructor(service: ContaService) {
+  constructor(service: LancService) {
     this.service = service;
   }
 
   inserir = async (req: Request, res: Response): Promise<void> => {
-    const { tipo, prazo, valor } = req.body;
+    const { nome, categoria, prazo, valor } = req.body;
     try{ 
-        const novaConta = await this.service.inserir({ tipo, prazo, valor });
-        res.status(201).json(novaConta);
+        const novoLanc = await this.service.inserir({ nome, categoria, prazo, valor });
+        res.status(201).json(novoLanc);
     }
     catch(err:any) {
         res.status(err.id).json({ error: err.msg });
@@ -20,15 +20,15 @@ export class ContaController {
   };
 
   listar = async (_req: Request, res: Response): Promise<void> => {
-    const contas = await this.service.listar();
-    res.json(contas);
+    const lancs = await this.service.listar();
+    res.json(lancs);
   };
 
   buscarPorId = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
     try{ 
-        const conta = await this.service.buscarPorId(id);
-        res.json(conta);
+        const lanc = await this.service.buscarPorId(id);
+        res.json(lanc);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }
@@ -36,11 +36,11 @@ export class ContaController {
 
   atualizar = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
-    const { tipo, prazo, valor } = req.body;
+    const { nome, categoria, prazo, valor } = req.body;
 
     try{ 
-        const contaAtualizada = await this.service.atualizar(id, { tipo, prazo, valor });
-        res.json(contaAtualizada);
+        const lancAtualizado = await this.service.atualizar(id, { nome, categoria, prazo, valor });
+        res.json(lancAtualizado);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }
@@ -49,8 +49,8 @@ export class ContaController {
   deletar = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
     try{ 
-        const conta = await this.service.deletar(id);
-        res.json(conta);
+        const lanc = await this.service.deletar(id);
+        res.json(lanc);
     } catch (err: any) {
         res.status(err.id).json({ error: err.msg });
     }

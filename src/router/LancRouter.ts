@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { DespesaController } from '../controller/DespesaController';
+import { LancController } from '../controller/LancController';
 
-export const despesaRotas = (controller: DespesaController): Router => {
+export const lancRotas = (controller: LancController): Router => {
   const router = Router();
 
   router.post('/', controller.inserir);

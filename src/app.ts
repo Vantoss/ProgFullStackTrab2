@@ -1,32 +1,32 @@
 import express from 'express';
-import { DespesaRepository } from './repository/DespesaRepository';
-import { DespesaService } from './service/DespesaService';
-import { DespesaController } from './controller/DespesaController';
-import { despesaRotas } from './router/DespesaRouter';
-import { ContaRepository } from './repository/ContaRepository';
-import { ContaService } from './service/ContaService';
-import { ContaController } from './controller/ContaController';
-import { contaRotas } from './router/ContaRouter';
+import { MoviRepository } from './repository/MoviRepository';
+import { MoviService } from './service/MoviService';
+import { MoviController } from './controller/MoviController';
+import { moviRotas } from './router/MoviRouter';
+import { LancRepository } from './repository/LancRepository';
+import { LancService } from './service/LancService';
+import { LancController } from './controller/LancController';
+import { lancRotas } from './router/LancRouter';
 import { AppDataSource } from './data-source';
-import { Despesa } from './model/Despesa';
-import { Conta } from './model/Conta';
+import { Movimentacoes } from './model/Movimentacoes';
+import { Lancamentos } from './model/Lancamentos';
 
 AppDataSource.initialize().then(async => {
   const app = express();
   app.use(express.json());
 
   // Initialize dependencies
-  const despesaRepository = AppDataSource.getRepository(Despesa);
-  const despesaService = new DespesaService(despesaRepository);
-  const despesaController = new DespesaController(despesaService);
+  const moviRepository = AppDataSource.getRepository(Movimentacoes);
+  const moviService = new MoviService(moviRepository);
+  const moviController = new MoviController(moviService);
   
-  const contaRepository = AppDataSource.getRepository(Conta);
-  const contaService = new ContaService(contaRepository);
-  const contaController = new ContaController(contaService);
+  const lancRepository = AppDataSource.getRepository(Lancamentos);
+  const lancService = new LancService(lancRepository);
+  const lancController = new LancController(lancService);
 
   // Routes
-  app.use('/api/despesas', despesaRotas(despesaController));
-  app.use('/api/contas', contaRotas(contaController));
+  app.use('/api/movimentacoes', moviRotas(moviController));
+  app.use('/api/lancamentos', lancRotas(lancController));
 
   const PORT = 3000;
   app.listen(PORT, () => {
