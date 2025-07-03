@@ -1,8 +1,17 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header{
+    width: auto;
+    height: auto;
+    top: 0;
+    background-color: lightgreen;
+    border-bottom: 5px solid rgb(124, 207, 124);
+    padding: 10px;
 }
 
 .containerlogin{
@@ -10,9 +19,10 @@
     padding: 20px;
     margin: auto;
     margin-top: 20px;
+    max-width: 50%;
 }
 
-h1{
+h3, h1{
     text-align: center;
 }
 
@@ -27,4 +37,40 @@ a:link, a:visited{
 p{
     font-weight: bold;
     text-align: center;
+}
+
+.containertable{
+    border: 2px solid black;
+    width: auto;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    max-width: 70%;
+}
+
+ul{
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto;
+    width: fit-content;
+    padding: 0;
+}
+
+li{
+    float: left;
+}
+
+li a{
+    text-decoration: none;
+    display: block;
+}
+
+footer{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100px;
+    background-color: lightgreen;
+    border-top: 5px solid rgb(124, 207, 124);
 }
