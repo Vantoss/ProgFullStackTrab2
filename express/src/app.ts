@@ -13,6 +13,7 @@ import { Lancamentos } from './model/Lancamentos';
 
 AppDataSource.initialize().then(async => {
   const app = express();
+  const cors = require('cors');
   app.use(express.json());
 
   // Initialize dependencies
@@ -25,8 +26,8 @@ AppDataSource.initialize().then(async => {
   const lancController = new LancController(lancService);
 
   // Routes
-  app.use('/api/movimentacoes', moviRotas(moviController));
-  app.use('/api/lancamentos', lancRotas(lancController));
+  app.use('/api/movimentacoes', cors(), moviRotas(moviController));
+  app.use('/api/lancamentos', cors(), lancRotas(lancController));
 
   const PORT = 3000;
   app.listen(PORT, () => {

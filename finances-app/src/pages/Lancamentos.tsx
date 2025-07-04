@@ -1,7 +1,9 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Getters from "../service/Getters";
 
 export default function Lancamentos() {
+    Getters.getLanc();
     return (
         <>
             <Header/>
