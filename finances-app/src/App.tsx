@@ -1,9 +1,10 @@
 //import { useState } from 'react'
 import { Outlet } from 'react-router'
 import './css/App.css'
+import  getMovi from './ListarMovi'
 
 function App() {
-
+  getMovi.getMovi()
   return (
     <>
       <Outlet></Outlet>
