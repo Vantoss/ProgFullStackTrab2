@@ -18,7 +18,7 @@ export default function Login(){
                 </div>
                 <div className="row mt-3">
                     <div className="col-5 mx-auto">
-                        <p id="cadtext">Não tem uma conta ainda? <a data-bs-toggle='modal' data-bs-target='#cadusermodal' href="">Crie uma.</a></p>
+                        <p>Não tem uma conta ainda? <a id="cadtext" data-bs-toggle='modal' data-bs-target='#cadusermodal' href="">Crie uma.</a></p>
                     </div>
                 </div>
             </div>

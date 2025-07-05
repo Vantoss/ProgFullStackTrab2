@@ -1,9 +1,9 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Getters from "../service/Getters";
+import TableMovi from "../components/TableMovi";
+//import Getters from "../service/Getters";
 
 export default function Movimentacoes() {
-    Getters.getMovi();
     return (
         <> 
             <Header/>
@@ -11,7 +11,19 @@ export default function Movimentacoes() {
                 <div className="row">
                     <h3>Suas movimentações</h3>
                     <div className="containertable col rounded" id="tabelamovi">
-                        <table id="movimentacoes" className="table table-bordered"></table>
+                        <table id="movimentacoes" className="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Categoria</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <TableMovi/>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
