@@ -1,4 +1,16 @@
+import { Navigate } from "react-router";
+import DBService from "../service/DBService";
+
 export default function ModalLogin(){
+    function cadastrar(){
+        var nome = document.forms["cadform"]["nomecad"].value;
+        var senha = document.forms["cadform"]["senhacad"].value;
+        const novoUser = {"nome": nome, "senha": senha};
+        DBService.insertUser(novoUser).then(()=>{
+            window.alert("Usuário cadastrado com sucesso!");
+            <Navigate to="/movimentacoes"/>
+        });
+    }
     return(
         <div className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="cadusermodal">
             <div className="modal-dialog modal-dialog-centered">
@@ -10,14 +22,16 @@ export default function ModalLogin(){
                 </div>
 
                 <div className="modal-body">
-                    <label>Nome:</label><br/>
-                    <input type="text" name="nomecad" id="nomecad" placeholder="" required/><br/>
-                    <label>Senha:</label><br/>
-                    <input type="password" name="senhacad" id="senhacad" placeholder="" required/>
+                    <form id="cadform">
+                        <label>Nome:</label><br/>
+                        <input type="text" name="nomecad" id="nomecad" placeholder="" required/><br/>
+                        <label>Senha:</label><br/>
+                        <input type="password" name="senhacad" id="senhacad" placeholder="" required/>   
+                    </form>
                 </div>
 
                 <div className="modal-footer">
-                    <button type="submit" className="btn btn-success" id="enviar" data-bs-dismiss="modal" /*onClick={cadastar()} */>Cadastrar usuário</button>
+                    <button type="submit" className="btn btn-success" id="enviar" data-bs-dismiss="modal" onClick={cadastrar}>Cadastrar usuário</button>
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
 

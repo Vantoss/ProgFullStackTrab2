@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Getters from "../service/Getters";
+import DBService from "../service/DBService";
 import LinhaMovi from "./LinhaMovi";
 
 export default function TableMovi(){
     const [movimentacoes, setMovi] = useState([]);
 
     useEffect(() => {
-        Getters.getMovi().then(
+        DBService.getMovi().then(
             movi => setMovi(movi)
         )
     }, [])

@@ -1,7 +1,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import TableLanc from "../components/TableLanc";
-//import Getters from "../service/Getters";
 
 export default function Lancamentos() {
     return (
