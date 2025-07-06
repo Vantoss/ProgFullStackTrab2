@@ -1,4 +1,8 @@
 import express from 'express';
+import { UserRepository } from './repository/UserRepository';
+import { UserService } from './service/UserService';
+import { UserController } from './controller/UserController';
+import { userRotas } from './router/UserRouter';
 import { MoviRepository } from './repository/MoviRepository';
 import { MoviService } from './service/MoviService';
 import { MoviController } from './controller/MoviController';
@@ -10,6 +14,7 @@ import { lancRotas } from './router/LancRouter';
 import { AppDataSource } from './data-source';
 import { Movimentacoes } from './model/Movimentacoes';
 import { Lancamentos } from './model/Lancamentos';
+import { User } from './model/User';
 
 AppDataSource.initialize().then(async => {
   const app = express();
@@ -17,6 +22,10 @@ AppDataSource.initialize().then(async => {
   app.use(express.json());
 
   // Initialize dependencies
+  const userRepository = AppDataSource.getRepository(User);
+  const userService = new UserService(userRepository);
+  const userController = new UserController(userService);
+
   const moviRepository = AppDataSource.getRepository(Movimentacoes);
   const moviService = new MoviService(moviRepository);
   const moviController = new MoviController(moviService);
@@ -28,6 +37,7 @@ AppDataSource.initialize().then(async => {
   // Routes
   app.use('/api/movimentacoes', cors(), moviRotas(moviController));
   app.use('/api/lancamentos', cors(), lancRotas(lancController));
+  app.use('/api/users', cors(), userRotas(userController));
 
   const PORT = 3000;
   app.listen(PORT, () => {
