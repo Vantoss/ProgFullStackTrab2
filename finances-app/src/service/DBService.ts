@@ -7,20 +7,6 @@ async function getMovi(){
     return response.data
 }
 
-async function getLanc(){
-    const url = "http://localhost:3000/api/lancamentos/"
-    const response = await axios.get(url)
-    //console.log(response.data)
-    return response.data
-}
-
-async function getUser(){
-    const url = "http://localhost:3000/api/users/"
-    const response = await axios.get(url)
-    //console.log(response.data)
-    return response.data
-}
-
 async function insertMovi(movi: any){
     const url = "http://localhost:3000/api/movimentacoes/"
     const response = await axios.post(url, movi)
@@ -29,6 +15,33 @@ async function insertMovi(movi: any){
     } else{
         throw("Algo deu errado")
     }
+}
+
+async function putMovi(movi: any){
+    const url = "http://localhost:3000/api/movimentacoes/"
+    const response = await axios.put(url, movi)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
+async function delMovi(movi: any){
+    const url = "http://localhost:3000/api/movimentacoes/"
+    const response = await axios.delete(url, movi)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
+async function getLanc(){
+    const url = "http://localhost:3000/api/lancamentos/"
+    const response = await axios.get(url)
+    //console.log(response.data)
+    return response.data
 }
 
 async function insertLanc(lanc: any){
@@ -41,6 +54,33 @@ async function insertLanc(lanc: any){
     }
 }
 
+async function putLanc(lanc: any){
+    const url = "http://localhost:3000/api/lancamentos/"
+    const response = await axios.put(url, lanc)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
+async function delLanc(lanc: any){
+    const url = "http://localhost:3000/api/lancamentos/"
+    const response = await axios.delete(url, lanc)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
+async function getUser(){
+    const url = "http://localhost:3000/api/users/"
+    const response = await axios.get(url)
+    //console.log(response.data)
+    return response.data
+}
+
 async function insertUser(user: any){
     const url = "http://localhost:3000/api/users/"
     const response = await axios.post(url, user)
@@ -51,11 +91,37 @@ async function insertUser(user: any){
     }
 }
 
+async function putUser(user: any){
+    const url = "http://localhost:3000/api/users/"
+    const response = await axios.put(url, user)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
+async function delUser(user: any){
+    const url = "http://localhost:3000/api/users/"
+    const response = await axios.delete(url, user)
+    if(response.status == 201){
+        return response.status
+    } else{
+        throw("Algo deu errado")
+    }
+}
+
 export default{
     getMovi,
     insertMovi,
+    putMovi,
+    delMovi,
     getLanc,
     insertLanc,
+    putLanc,
+    delLanc,
     getUser,
-    insertUser
+    insertUser,
+    putUser,
+    delUser
 }

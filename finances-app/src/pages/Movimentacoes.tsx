@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import ModalsMovi from "../components/ModalsMovi";
 import TableMovi from "../components/TableMovi";
 
 export default function Movimentacoes() {
@@ -57,6 +58,7 @@ export default function Movimentacoes() {
                                 <TableMovi/>
                             </tbody>
                         </table>
+                        <ModalsMovi/>
                     </div>
                 </div>
             </div>

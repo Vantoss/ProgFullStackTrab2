@@ -1,4 +1,3 @@
-import { Navigate } from "react-router";
 import DBService from "../service/DBService";
 
 export default function ModalLogin(){
@@ -8,7 +7,7 @@ export default function ModalLogin(){
         const novoUser = {"nome": nome, "senha": senha};
         DBService.insertUser(novoUser).then(()=>{
             window.alert("Usuário cadastrado com sucesso!");
-            <Navigate to="/movimentacoes"/>
+            window.location.href = "/movimentacoes";
         });
     }
     return(
@@ -22,7 +21,7 @@ export default function ModalLogin(){
                 </div>
 
                 <div className="modal-body">
-                    <form id="cadform">
+                    <form id="cadform" method="POST">
                         <label>Nome:</label><br/>
                         <input type="text" name="nomecad" id="nomecad" placeholder="" required/><br/>
                         <label>Senha:</label><br/>

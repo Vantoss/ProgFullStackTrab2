@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import ModalsLanc from "../components/ModalsLanc";
 import TableLanc from "../components/TableLanc";
 
 export default function Lancamentos() {
@@ -23,6 +24,7 @@ export default function Lancamentos() {
                                 <TableLanc/>
                             </tbody>
                         </table>
+                        <ModalsLanc/>
                     </div>
                 </div>
             </div>
