@@ -1,5 +1,29 @@
+import DBService from "../service/DBService";
+
 export default function ModalsMovi(){
-    
+    function cadMovi(){
+        var nome = document.forms["formmovi"]["nome"].value;
+        var cat = document.forms["formmovi"]["categoria"].value;
+        var data = document.forms["formmovi"]["data"].value;
+        var valor = document.forms["formmovi"]["valor"].value;
+        var tipo = document.forms["formmovi"]["tipo"].value;
+        const novaMovi = {
+            "nome": nome,
+            "categoria": cat,
+            "data": data,
+            "valor": valor,
+            "tipo": tipo
+        };
+        DBService.insertMovi(novaMovi).then(()=>{
+            window.alert("Movimentação cadastrada com sucesso!")   
+        });
+    }
+    function putMovi(){
+        //Implementar
+    }
+    function delMovi(){
+        //Implementar
+    }
     return(
         <>
             <div className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="cadmmodal">
@@ -38,8 +62,8 @@ export default function ModalsMovi(){
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="cadMovi()"*/ data-bs-dismiss="modal">Cadastrar</button>
-                            <button type="button" className="btn btn-secondary" /*onclick="document.getElementById('formmovi').reset()"*/ data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={cadMovi} data-bs-dismiss="modal">Cadastrar</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
 
                     </div>
@@ -75,7 +99,7 @@ export default function ModalsMovi(){
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="putMovi()"*/ data-bs-dismiss="modal">Salvar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={putMovi} data-bs-dismiss="modal">Salvar</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
 
@@ -100,7 +124,7 @@ export default function ModalsMovi(){
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="delMovi()"*/ data-bs-dismiss="modal">Apagar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={delMovi} data-bs-dismiss="modal">Apagar</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
 

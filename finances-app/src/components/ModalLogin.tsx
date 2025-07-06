@@ -7,7 +7,7 @@ export default function ModalLogin(){
         const novoUser = {"nome": nome, "senha": senha};
         DBService.insertUser(novoUser).then(()=>{
             window.alert("Usuário cadastrado com sucesso!");
-            window.location.href = "/movimentacoes";
+            window.location.href = "/movimentacoes"; //Ver pq que isso buga o app.
         });
     }
     return(

@@ -8,6 +8,7 @@ export default function LinhaMovi({movi}: any){
         var newv = Number(valor).toLocaleString("pt-BR",{style:"currency", currency:"BRL"});
         return newv
     }
+    //Adicionar as funções autofill
     return(
         <>
             <tr className='linha' key={movi.id}>

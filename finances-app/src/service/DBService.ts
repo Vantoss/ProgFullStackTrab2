@@ -17,8 +17,8 @@ async function insertMovi(movi: any){
     }
 }
 
-async function putMovi(movi: any){
-    const url = "http://localhost:3000/api/movimentacoes/"
+async function putMovi(movi: any, id: any){
+    const url = "http://localhost:3000/api/movimentacoes/:" + id
     const response = await axios.put(url, movi)
     if(response.status == 201){
         return response.status
@@ -27,9 +27,9 @@ async function putMovi(movi: any){
     }
 }
 
-async function delMovi(movi: any){
-    const url = "http://localhost:3000/api/movimentacoes/"
-    const response = await axios.delete(url, movi)
+async function delMovi(id: any){
+    const url = "http://localhost:3000/api/movimentacoes/:" + id
+    const response = await axios.delete(url)
     if(response.status == 201){
         return response.status
     } else{
@@ -54,8 +54,8 @@ async function insertLanc(lanc: any){
     }
 }
 
-async function putLanc(lanc: any){
-    const url = "http://localhost:3000/api/lancamentos/"
+async function putLanc(lanc: any, id: any){
+    const url = "http://localhost:3000/api/lancamentos/:" + id
     const response = await axios.put(url, lanc)
     if(response.status == 201){
         return response.status
@@ -64,9 +64,9 @@ async function putLanc(lanc: any){
     }
 }
 
-async function delLanc(lanc: any){
-    const url = "http://localhost:3000/api/lancamentos/"
-    const response = await axios.delete(url, lanc)
+async function delLanc(id: any){
+    const url = "http://localhost:3000/api/lancamentos/:" + id
+    const response = await axios.delete(url)
     if(response.status == 201){
         return response.status
     } else{
@@ -91,8 +91,8 @@ async function insertUser(user: any){
     }
 }
 
-async function putUser(user: any){
-    const url = "http://localhost:3000/api/users/"
+async function putUser(user: any, id: any){
+    const url = "http://localhost:3000/api/users/:" + id
     const response = await axios.put(url, user)
     if(response.status == 201){
         return response.status
@@ -101,9 +101,9 @@ async function putUser(user: any){
     }
 }
 
-async function delUser(user: any){
-    const url = "http://localhost:3000/api/users/"
-    const response = await axios.delete(url, user)
+async function delUser(id: any){
+    const url = "http://localhost:3000/api/users/:" + id
+    const response = await axios.delete(url)
     if(response.status == 201){
         return response.status
     } else{
