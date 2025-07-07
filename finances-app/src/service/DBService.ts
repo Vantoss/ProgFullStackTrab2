@@ -18,9 +18,9 @@ async function insertMovi(movi: any){
 }
 
 async function putMovi(movi: any, id: any){
-    const url = "http://localhost:3000/api/movimentacoes/:" + id
+    const url = "http://localhost:3000/api/movimentacoes/" + id
     const response = await axios.put(url, movi)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")
@@ -28,9 +28,9 @@ async function putMovi(movi: any, id: any){
 }
 
 async function delMovi(id: any){
-    const url = "http://localhost:3000/api/movimentacoes/:" + id
+    const url = "http://localhost:3000/api/movimentacoes/" + id
     const response = await axios.delete(url)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")
@@ -55,9 +55,9 @@ async function insertLanc(lanc: any){
 }
 
 async function putLanc(lanc: any, id: any){
-    const url = "http://localhost:3000/api/lancamentos/:" + id
+    const url = "http://localhost:3000/api/lancamentos/" + id
     const response = await axios.put(url, lanc)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")
@@ -65,9 +65,9 @@ async function putLanc(lanc: any, id: any){
 }
 
 async function delLanc(id: any){
-    const url = "http://localhost:3000/api/lancamentos/:" + id
+    const url = "http://localhost:3000/api/lancamentos/" + id
     const response = await axios.delete(url)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")
@@ -92,9 +92,9 @@ async function insertUser(user: any){
 }
 
 async function putUser(user: any, id: any){
-    const url = "http://localhost:3000/api/users/:" + id
+    const url = "http://localhost:3000/api/users/" + id
     const response = await axios.put(url, user)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")
@@ -102,9 +102,9 @@ async function putUser(user: any, id: any){
 }
 
 async function delUser(id: any){
-    const url = "http://localhost:3000/api/users/:" + id
+    const url = "http://localhost:3000/api/users/" + id
     const response = await axios.delete(url)
-    if(response.status == 201){
+    if(response.status == 200){
         return response.status
     } else{
         throw("Algo deu errado")

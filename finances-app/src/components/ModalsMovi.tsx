@@ -19,10 +19,28 @@ export default function ModalsMovi(){
         });
     }
     function putMovi(){
-        //Implementar
+        var id = document.forms["formmoviput"]["idputm"].value;
+        var nome = document.forms["formmoviput"]["nomeputm"].value;
+        var cat = document.forms["formmoviput"]["categoriaput"].value;
+        var data = document.forms["formmoviput"]["dataput"].value;
+        var valor = document.forms["formmoviput"]["valorputm"].value;
+        var tipo = document.forms["formmoviput"]["tipoput"].value;
+        const novaMovi = {
+            "nome": nome,
+            "categoria": cat,
+            "data": data,
+            "valor": valor,
+            "tipo": tipo
+        };
+        DBService.putMovi(novaMovi, id).then(()=>{
+            window.alert("Movimentação atualizada com sucesso!")   
+        });
     }
     function delMovi(){
-        //Implementar
+        var id = document.forms["formmovidel"]["iddelm"].value;
+        DBService.delMovi(id).then(()=>{
+            window.alert("Movimentação deletada com sucesso!")
+        })
     }
     return(
         <>

@@ -11,6 +11,9 @@ export default function Lancamentos() {
                 <div className="row">
                     <h3>Seus lançamentos futuros</h3>
                     <div className="containertable col rounded" id="tabelalanc">
+                        <div id="btns">
+                            <button type='submit' id='cadf' className='btn btn-success' data-bs-toggle='modal' data-bs-target='#cadfmodal'>Registrar lançamento</button>
+                        </div>
                         <table id="lancamentos" className="table table-bordered">
                             <thead>
                                 <tr>

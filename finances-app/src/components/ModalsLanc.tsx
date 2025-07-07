@@ -1,4 +1,43 @@
+import DBService from "../service/DBService"
+
 export default function ModalsLanc(){
+    function cadLanc(){
+        var nome = document.forms["formfixo"]["nome"].value;
+        var cat = document.forms["formfixo"]["categoria"].value;
+        var prazo = document.forms["formfixo"]["validade"].value;
+        var valor = document.forms["formfixo"]["valor"].value;
+        const novoLanc = {
+            "nome": nome,
+            "categoria": cat,
+            "prazo": prazo,
+            "valor": valor
+        };
+        DBService.insertLanc(novoLanc).then(()=>{
+            window.alert("Lançamento cadastrado com sucesso!")   
+        });
+    }
+    function putLanc(){
+        var id = document.forms["formfixoput"]["idputf"].value;
+        var nome = document.forms["formfixoput"]["nomeputf"].value;
+        var cat = document.forms["formfixoput"]["catputf"].value;
+        var prazo = document.forms["formfixoput"]["validadeput"].value;
+        var valor = document.forms["formfixoput"]["valorputf"].value;
+        const novoLanc = {
+            "nome": nome,
+            "categoria": cat,
+            "prazo": prazo,
+            "valor": valor
+        };
+        DBService.putLanc(novoLanc, id).then(()=>{
+            window.alert("Lançamento atualizado com sucesso!")   
+        });
+    }
+    function delLanc(){
+        var id = document.forms["formfixodel"]["iddelf"].value;
+        DBService.delLanc(id).then(()=>{
+            window.alert("Lançamento apagado com sucesso!")
+        })
+    }
     
     return(
         <>
@@ -15,16 +54,26 @@ export default function ModalsLanc(){
                             <form id="formfixo">
                                 <label>Nome:</label><br/>
                                 <input type="text" name="tipoc" id="nome" placeholder="(Luz, água, parcela...)" required/><br/>
+                                <label>Categoria:</label><br/>
+                                <select name="categoriaf" id="categoria">
+                                    <option value="Moradia">Moradia</option>
+                                    <option value="Alimentação">Alimentação</option>
+                                    <option value="Lazer">Lazer</option>
+                                    <option value="Saúde">Saúde</option>
+                                    <option value="Educação">Educação</option>
+                                    <option value="Transporte">Transporte</option>
+                                    <option value="Trabalho">Trabalho</option>
+                                </select><br/>
                                 <label>Validade:</label><br/>
                                 <input type="date" name="validade" id="validade" placeholder="Prazo" required/><br/>
                                 <label>Valor:</label><br/>
-                                <input type="number" name="valorc" id="valorconta" placeholder="Valor" required/>
+                                <input type="number" name="valorc" id="valor" placeholder="Valor" required/>
                             </form>
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="cadFixo()"*/ data-bs-dismiss="modal">Cadastrar</button>
-                            <button type="button" className="btn btn-secondary" /*onclick="document.getElementById('formfixo').reset()"*/ data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={cadLanc} data-bs-dismiss="modal">Cadastrar</button>
+                            <button type="button" className="btn btn-secondary" /*onclick="document.getElementById('formLanc').reset()"*/ data-bs-dismiss="modal">Cancelar</button>
                         </div>
 
                     </div>
@@ -45,6 +94,16 @@ export default function ModalsLanc(){
                                 <input hidden type="text" name="id" id="idputf" required/>
                                 <label>Nome:</label><br/>
                                 <input type="text" name="tipoc" id="nomeputf" placeholder="(Luz, água, parcela...)" required/><br/>
+                                <label>Categoria:</label><br/>
+                                <select name="categoriam" id="catputf">
+                                    <option value="Moradia">Moradia</option>
+                                    <option value="Alimentação">Alimentação</option>
+                                    <option value="Lazer">Lazer</option>
+                                    <option value="Saúde">Saúde</option>
+                                    <option value="Educação">Educação</option>
+                                    <option value="Transporte">Transporte</option>
+                                    <option value="Trabalho">Trabalho</option>
+                                </select><br/>
                                 <label>Validade:</label><br/>
                                 <input type="date" name="validade" id="validadeput" placeholder="Prazo" required/><br/>
                                 <label>Valor:</label><br/>
@@ -53,7 +112,7 @@ export default function ModalsLanc(){
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="putFixo()"*/ data-bs-dismiss="modal">Salvar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={putLanc} data-bs-dismiss="modal">Salvar</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
 
@@ -78,7 +137,7 @@ export default function ModalsLanc(){
                         </div>
 
                         <div className="modal-footer">
-                            <button type="submit" className="btn btn-success" id="enviar" /*onclick="delFixo()"*/ data-bs-dismiss="modal">Apagar</button>
+                            <button type="submit" className="btn btn-success" id="enviar" onClick={delLanc} data-bs-dismiss="modal">Apagar</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
 
