@@ -2,4 +2,4 @@
 
 Aplicativo de finanças.
 
-Projeto que permite cadastrar e visualizar despesas e contas a pagar.
+Projeto que permite cadastrar, categorizar e visualizar despesas, receitas e lançamentos fixos.
