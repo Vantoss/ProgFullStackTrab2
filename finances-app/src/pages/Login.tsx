@@ -2,20 +2,35 @@ import { useNavigate } from "react-router";
 import ModalLogin from "../components/ModalLogin"
 import DBService from "../service/DBService";
 
-
 export default function Login(){
-    function login(){
+    var navigate = useNavigate()
+    const login = (e:any)=>{
+        e.preventDefault()
         /*var nome = document.forms["loginform"]["nomelog"].value;
         var senha = document.forms["loginform"]["senhalog"].value;
+        console.log("nome:", nome)
+        console.log("senha:", senha)
         const User = {"nome": nome, "senha": senha};
-        const select = [];
-        DBService.getUser();
-        console.log(select);
-        //select.forEach(user =>{
-            //if(user. == User.nome)
-        //})*/
-        
-    }var navigate = useNavigate()
+        const lista:any[] = [];
+        const lista2:any[] = [];
+        DBService.getUser().then(
+            user => user.forEach((u:any)=>{
+                lista.push(u);
+            })
+        );
+        console.log("usuários:", lista[0])
+        lista.forEach(user => {
+            if(user.nome == User.nome && user.senha == User.senha){
+                lista2.push(user);
+            } else{
+                console.log("n")
+            }
+        });
+        console.log("usuários:", lista)
+        console.log(lista2)*/
+
+        navigate("/movimentacoes");
+    }
     return(
         <>
             <h1 className="mt-4">Faça seu login</h1>
@@ -23,12 +38,12 @@ export default function Login(){
             <div className="container mx-auto mt-4" id="login">
                 <div className="row">
                     <div className="containerlogin col rounded"> 
-                        <form id="loginform" method="POST">
+                        <form id="loginform" method="POST" onSubmit={login}>
                             <label>Nome:</label>
                             <input type="text" name="nomelog" id="nomelog" placeholder="" required/><br/>
                             <label>Senha:</label>
                             <input type="password" name="senhalog" id="senhalog" placeholder="" required/><br/>
-                            <button id="enviar "type="submit" className="btn btn-success" onClick={()=>{navigate("/movimentacoes")}} >Enviar</button>   
+                            <button id="enviar" type="submit" className="btn btn-success"  >Enviar</button>   
                         </form>
                     </div>
                 </div>
